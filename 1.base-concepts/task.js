@@ -24,31 +24,32 @@ console.log('с аргументами 1, 6, 1 результат : ', case3);
 
 
 
-function calculateTotalMortgage(percent, contribution, amount, date) {
+function calculateTotalMortgage(percent_, contribution_, amount_, date) {
   let totalAmount;                         // общая сумма
   let nowDate = new Date();                // дата (месяц) первого взноса
-  let time = date - nowDate;               // разница времени в миллисекундах 
-  let bodyCredit = amount - contribution;  // тело кредита
-  
-  percent = +percent;
-  contribution = +contribution;
-  amount = +amount;
+                
+  let percent = +percent_;
+  let contribution = +contribution_;
+  let amount = +amount_;
 
-  if ( isNan(percent) || percent <= 0) {
-    return "Параметр \"процентная ставка\" содержит неправильное значение " + percent;
+  if ( isNaN(percent) || percent <= 0) {
+    return "Параметр \"Процентная ставка\" содержит неправильное значение \"" + percent_ + "\"";
   }
 
-  if (isNan(contribution) || contribution < 0) {
-    return "Параметр \"Начальный взнос\" содержит неправильное значение " + contribution;
+  if (isNaN(contribution) || contribution < 0) {
+    return "Параметр \"Начальный взнос\" содержит неправильное значение \"" + contribution_ + "\"";
   }
 
-  if (isNan(amount) != 'number' || amount <= 0) {
-    return "Параметр \"Сумма кредита\" содержит неправильное значение " + amount;
+  if (isNaN(amount) || amount <= 0) {
+    return "Параметр \"Общая стоимость\" содержит неправильное значение \"" + amount_ + "\"";
   }
 
   if (!(date instanceof Date) || date <= nowDate) {
     return "Параметр \"Срок ипотеки\" содержит неправильное значение " + date;
   }
+
+  let time = date - nowDate;               // разница времени в миллисекундах 
+  let bodyCredit = amount - contribution;  // тело кредита
 
   let n = Math.floor(time / (1000 * 60 * 60 * 24 * 30));   // количество месяцев
   let p = percent / 12 / 100;
