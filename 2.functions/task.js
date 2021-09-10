@@ -58,7 +58,7 @@ function makeWork(arrOfArr, func) {
 }
 
 function mincer(arrOfArr) {
-  return makeWork(arrOfArr, worker);
+return makeWork(arrOfArr, worker);
 }
 
 
