@@ -84,6 +84,6 @@ function worker2(arr) {
   return dif;
 }
 
-function mincer2(arrOfArr) {
+function mincer(arrOfArr) {
   return makeWork(arrOfArr, worker2);
 }
