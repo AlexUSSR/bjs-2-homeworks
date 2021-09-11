@@ -52,27 +52,18 @@ Student.prototype.exclude = function(reason) {
     delete this.marks;
 } 
 
-let student11 = new Student("Tony", "male", 37);
-student11.setSubject("Algebra");
+let student11 = new Student("George", "male", 18);
+student11.setSubject("Astronomia");
 student11.addMark(5);
 student11.addMark(4);
-student11.addMark(5);
-console.log(student11.getAverage()); //4.6666
+student11.addMark(4);
+console.log(student11.getAverage());
 console.log(student11);
-// {age: 37, gender: "male", marks: [5, 4, 5], name: "Tony", subject: "Algebra"}
-let student12 = new Student("Buzz", "female", 35);
-student12.setSubject("Geometry");
-student12.addMark(2);
+
+let student12 = new Student("Alice", "female", 19);
+student12.setSubject("Geography");
 student12.addMark(3);
 student12.addMark(2);
+student12.addMark(2);
 student12.exclude('low grades')
-console.log(student12)
-// {name: "Buzz", gender: "female", age: 35, excluded: "low grades"}
-
-
-
-
-
-
-
-// ваш код для остальных методов
+console.log(student12);
