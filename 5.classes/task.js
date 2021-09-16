@@ -42,11 +42,11 @@ sherlock1.fix();
 console.log(sherlock1.state); //100
 
 
-class Magazine extends PrintEditionItem {
-  constructor() {
-  	super(name);
-  	this.name = name;
-  	this.type = "magazine";
+class Magazine extends PrintEditionItem {    // я не понимаю в чем проблема. Действую согласно презентации.
+  constructor() {                            // extends это ведь и есть команда наследования?
+  	super(name);                             // при этом конструктор Журнала наследует конструктор "родителя"
+  	this.name = name;                        // и добавляет свои новые аргументы. Или не так?
+  	this.type = "magazine";                  // почему Жасмин и консоль не выдают ошибок?
   }
 }
 
@@ -102,46 +102,44 @@ console.log(picknick1.state); //15
 // Задание 2
 
 class Library {
-  constructor(name, books, state) {
+  constructor(name, books) {
   	this.name = name;
   	this.books = [];
-  	this.state = state;
   }
 
-  addBook(book) {
+  addBook(book, state) {
   	this.book = book;
+  	this.state = state;
 
   	if ( this.state > 30) {
-  		this.books += this.book;
+  	  this.books += this.book;
+  	  console.log([] + {});                    // я так и не понял: это объект влаживаем в массив?
   	} return this.books;
-  }                                 //  до сих пор Jasmin дает зеленый свет
+  }                                            //  до сих пор Jasmin дает зеленый свет
 
-  findBookBy(type, value) {         //  начиная с этого метода не понимаю ошибки
-  	this.type = type;
-  	this.value = value;
+  findBookBy(type, value) {               //  начиная с этого метода не понимаю: 
+  	let myBook;                           // 1. зачем здесь type , value если создаю переменную?
+  	  myBook[type];                       // 2. переменная такая или иная?
+  	  myBook[author];                     // 3. что вводить в значение?
+  	  myBook[nameBook];
+  	  myBook[year];
+  	  myBook[pages];
 
-  	if ( this.value = true) return this.book;
+    for ( let i = 0; i < myBook.lenght; i++) {
+      if ( myBook[i] == true)
+      return myBook[i];
+    } if ( myBook[i] = false) return null;
   }
 
-  giveBookByName(bookName) {
-  	this.bookName = bookName;
-  	if ( this.bookName = true) {
-  	  delete this.bookName;          // с выдачей и возвратом книг вообще не понял 
-  	} return this.bookName;
 
-    if ( this.bookName = false) return null;
+  giveBookByName(bookName) {
+  	
+  	for ( let i = 0; i < bookName.lenght; i++) {
+  	  if (bookName[i] == true) {
+  	    delete bookName[i](this.books);     // правильно ли так удалить книгу из хранилища?
+  	    return bookName[i];
+  	  } else return null;
+  	}
   } 
 }
   
-  
-
-
-
-
-
-
-
-
-
-
-
