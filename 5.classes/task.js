@@ -13,7 +13,7 @@ class PrintEditionItem {
   }
 
   fix = function() {
-	this.state *= 1.5
+	this.state *= 1.5;
   }
 
   set state(state) {
@@ -31,7 +31,7 @@ class PrintEditionItem {
 }
  
 const sherlock1 = new PrintEditionItem(
-  "Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе",
+  'Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе',
   2019,
   1008
 );
@@ -42,61 +42,70 @@ sherlock1.fix();
 console.log(sherlock1.state); //100
 
 
-class Magazine extends PrintEditionItem {    // я не понимаю в чем проблема. Действую согласно презентации.
-  constructor() {                            // extends это ведь и есть команда наследования?
-  	super(name);                             // при этом конструктор Журнала наследует конструктор "родителя"
-  	this.name = name;                        // и добавляет свои новые аргументы. Или не так?
-  	this.type = "magazine";                  // почему Жасмин и консоль не выдают ошибок?
+class Magazine extends PrintEditionItem {  
+  constructor(name, releaseDate, pagesCount, state, type) {
+  	super(name, releaseDate, pagesCount, state);				
+  	this.type = 'magazine';
   }
 }
+
+const printItem = new Magazine('Forbes', 2020, 180, 70, 'magazine');
+
+console.log('\"' + printItem.name + '\", ' + printItem.releaseDate + ' год, ' + 
+	printItem.pagesCount + 'c., ' + printItem.type);
+
 
 
 class Book extends PrintEditionItem {
-  constructor(author) {
-    super(name, author);
-  	this.name = name;
+  constructor(author, name, releaseDate, pagesCount, state, type) {
+    super(name, releaseDate, pagesCount, state);
   	this.author = author;
-  	this.type = "book";
+  	this.type = 'book';
   }
 }
+
+const printItem1 = new Book('Т. Шевченко', 'Кобзар', 1935, 357, 15, 'book')
+
+console.log(printItem1.author + ', \"' + printItem1.name + '\", ' + printItem1.releaseDate + ' год, ' + 
+	printItem1.pagesCount + 'c., ' + printItem1.type);
 
 
 class NovelBook extends Book {
-  constructor(author) {
-  	super(author);
-    this.type = "novel";
+  constructor(author, name, releaseDate, pagesCount, state, type) {
+  	super(author, name, releaseDate, pagesCount, state);
+    this.type = 'novel';
   }
 }
 
+const printItem2 = new NovelBook('А. Сапковский', 'Меч Предназначения', 1992, 384, 30, 'novel');
+
+console.log(printItem2.author + ', \"' + printItem2.name + '\", ' + printItem2.releaseDate + ' год, ' + 
+	printItem2.pagesCount + 'c., ' + printItem2.type);
 
 class FantasticBook extends Book {
-  constructor(author) {
-  	super(author);
-  	this.type = "fantastic";
+  constructor(author, name, releaseDate, pagesCount, state, type) {
+  	super(author, name, releaseDate, pagesCount, state);
+  	this.type = 'fantastic';
   }
 }
 
+const printItem3 = new FantasticBook('Джон Толкин', 'Властелин колец', 1954, 2093, 60, 'fantastic');
+
+console.log(printItem3.author + ', \"' + printItem3.name + '\", ' + printItem3.releaseDate + ' год, ' + 
+	printItem3.pagesCount + 'c., ' + printItem3.type);
 
 class DetectiveBook extends Book {
-  constructor(author) {
-  	super(author);
-    this.type = "detective";
+  constructor(author, name, releaseDate, pagesCount, state, type) {
+  	super(author, name, releaseDate, pagesCount, state);
+    this.type = 'detective';
   }
 }
 
+const printItem4 = new DetectiveBook('Агата Кристи', 'Десять негритят', 2019, 256, 80, 'detective');
 
-const picknick1 = new FantasticBook(
-  "Аркадий и Борис Стругацкие",
-  "Пикник на обочине",
-  1972,
-  168
-);
+console.log(printItem4.author + ', \"' + printItem4.name + '\", ' + printItem4.releaseDate + ' год, ' + 
+	printItem4.pagesCount + 'c., ' + printItem4.type);
 
-console.log(picknick1.author); //"Аркадий и Борис Стругацкие"
-picknick1.state = 10;
-console.log(picknick1.state); //10
-picknick1.fix();
-console.log(picknick1.state); //15
 
 
 // Задание 2
@@ -113,18 +122,13 @@ class Library {
 
   	if ( this.state > 30) {
   	  this.books += this.book;
-  	  console.log([] + {});                    // я так и не понял: это объект влаживаем в массив?
   	} return this.books;
   }                                            //  до сих пор Jasmin дает зеленый свет
 
-  findBookBy(type, value) {               //  начиная с этого метода не понимаю: 
-  	let myBook;                           // 1. зачем здесь type , value если создаю переменную?
-  	  myBook[type];                       // 2. переменная такая или иная?
-  	  myBook[author];                     // 3. что вводить в значение?
-  	  myBook[nameBook];
-  	  myBook[year];
-  	  myBook[pages];
+  findBookBy(type, value) {              
 
+
+  	
     for ( let i = 0; i < myBook.lenght; i++) {
       if ( myBook[i] == true)
       return myBook[i];
