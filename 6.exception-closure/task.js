@@ -5,7 +5,7 @@
 function parseCount(text) {                  
   
   const digit = Number.parseInt(text) 
-  	if ( Number.isNaN(digit) == true) {
+  	if ( Number.isNaN(digit)) {
   	  throw new Error('Невалидное значение');
   	} return digit;
   
@@ -15,8 +15,8 @@ console.log(parseCount('56'));
 
 function validateCount(text) { 
     let digit2;
-  	try { digit2 = parseCount(text)
-  	} catch (err) {
+  	try { return parseCount(text)
+    } catch (err) {
         return err;
   	} return digit2;
 }
@@ -28,41 +28,41 @@ console.log(validateCount('234'));
 
 class Triangle {
 	constructor(a, b, c) {
-      this.a = a;
+      if ( a + b < c || a + c < b || c + b < a) {
+	  throw new Error('Треугольник с такими сторонами не существует');
+	  }
+	  this.a = a;
       this.b = b;
       this.c = c;
-    
-    if ( this.a + this.b < this.c || this.a + this.c < this.b || this.c + this.b < this.a) {
-	  	throw new Error('Треугольник с такими сторонами не существует');
-	  	}
 	}
 
-    getPrimeter() {
+    getPerimeter() {
       let p = this.a + this.b + this.c; // периметр
-      return p.toFixed(3);
+      return p;
     }
 
     getArea() {
-      let floorP = p / 2;  // полупериметр
+      let floorP = this.getPerimeter() / 2;  // полупериметр
       let area = Math.sqrt(floorP * (floorP - this.a) * (floorP - this.b) * (floorP - this.c)); // площадь
-      return area.toFixed(3);
-   }
-
-
-    getTriangle = function(a, b, c) {
-      try {
-        return new Triangle(a, b, c);
-      } catch (err) {
-        
-          getPerimeter() 
-          return 'Ошибка! Треугольник не существует';
-          
-          getArea() 
-          return 'Ошибка! Треугольник не существует';
-        }
+      return Number(area.toFixed(3));
     }
+
 }
 
+function getTriangle(a, b, c) {
+  try {
+    return new Triangle(a, b, c);
+    } catch {
+        return {
+          getPerimeter() {
+          return 'Ошибка! Треугольник не существует';
+          },
+          getArea() {
+          return 'Ошибка! Треугольник не существует';
+          }
+        }
+      }
+}
 
   
 
