@@ -111,34 +111,31 @@ console.log(printItem4.author + ', \"' + printItem4.name + '\", ' + printItem4.r
 // Задание 2
 
 class Library {
-  constructor(name, books) {
-  	this.name = name;
-  	this.books = [];
+  constructor (name, books) {
+    this.name = name;
+    this.books = [];
   }
 
-  addBook(book) {
-  	if ( book.state >= 30)
-  	  this.books.push(book);
+  addBook (book) {
+    if (book.state >= 30) {
+      this.books.push(book)
+    }
   }
 
-  findBookBy(type, value) {              
+  findBookBy (type, value) {
     for (let i = 0; i < this.books.length; i++) {
-      if (this.books[i][type] === value)
+      if (this.books[i][type] === value) {
         return this.books[i];
-    } return null;
-  } 
+      }
+    }
+    return null;
 
+  }
 
   giveBookByName(bookName) {
-  	const myBook = this.books.filter((value) => {
-      return value.name === bookName;
-  	})
-
-    myBook.forEach(item => {
-      const index = this.books.indexOf(item);
-      this.books.splice(index, 1);
-      })
-      return myBook[0].name;
+    let book = this.findBookBy("name", bookName);
+    if (book !== null) this.books.splice(this.books.indexOf(book), 1);
+    return book;
   }
 } 
 
