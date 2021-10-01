@@ -116,34 +116,26 @@ class Library {
   	this.books = [];
   }
 
-  addBook(book, state) {
-  	this.book = book;
-  	this.state = state;
+  addBook(book) {
+  	
 
-  	if ( this.state > 30) {
-  	  this.books += this.book;
-  	} return this.books;
-  }                                            //  до сих пор Jasmin дает зеленый свет
+  	if ( book?.state > 30)
+  	  this.books.push(book);
+  }
 
   findBookBy(type, value) {              
-
-
-  	
-    for ( let i = 0; i < myBook.lenght; i++) {
-      if ( myBook[i] == true)
-      return myBook[i];
-    } if ( myBook[i] = false) return null;
+     return this.books.reduce((acc, currValue) => {
+      if (currValue[type] === value) acc = currValue;
+      return acc;
+    }, null);
   }
 
 
   giveBookByName(bookName) {
-  	
-  	for ( let i = 0; i < bookName.lenght; i++) {
-  	  if (bookName[i] == true) {
-  	    delete bookName[i](this.books);     // правильно ли так удалить книгу из хранилища?
-  	    return bookName[i];
-  	  } else return null;
+  	let book = this.findBookBy("name", bookName);
+    if (book !== null) this.books.splice(this.books.indexOf(book), 1);
+    return book;
   	}
-  } 
-}
+} 
+
   
