@@ -117,25 +117,29 @@ class Library {
   }
 
   addBook(book) {
-  	
-
-  	if ( book?.state > 30)
+  	if ( book.state >= 30)
   	  this.books.push(book);
   }
 
   findBookBy(type, value) {              
-     return this.books.reduce((acc, currValue) => {
-      if (currValue[type] === value) acc = currValue;
-      return acc;
-    }, null);
-  }
+    for (let i = 0; i < this.books.length; i++) {
+      if (this.books[i][type] === value)
+        return this.books[i];
+    } return null;
+  } 
 
 
   giveBookByName(bookName) {
-  	let book = this.findBookBy("name", bookName);
-    if (book !== null) this.books.splice(this.books.indexOf(book), 1);
-    return book;
-  	}
+  	const myBook = this.books.filter((value) => {
+      return value.name === bookName;
+  	})
+
+    myBook.forEach(item => {
+      const index = this.books.indexOf(item);
+      this.books.splice(index, 1);
+      })
+      return myBook[0].name;
+  }
 } 
 
   
